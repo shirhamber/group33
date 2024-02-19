@@ -38,7 +38,11 @@ border-top: 2px;
     text-align: right;
 
 }
+.text_info{
 
+   padding-bottom: 5px;
+    font-weight: bold;
+}
 
 
 .logo img {
