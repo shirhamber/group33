@@ -187,7 +187,7 @@ meetingButton.addEventListener('click', function(e) {
     // Create and append list items to the container
     meetings.forEach(meeting => {
         const listItem = document.createElement('div');
-        listItem.textContent = ${meeting.date} ${meeting.time};
+        listItem.textContent = `${meeting.date} ${meeting.time}`;
         meetingListContainer.appendChild(listItem);
     });
 
