@@ -1,26 +1,48 @@
  body {
     font-family: 'Assistant', sans-serif;
-            background-color: cornflowerblue; /* Dark Blue Background */
-            color: white; /* White Text */
+            background-color: whitesmoke; /*  Blue Background */
+            color: midnightblue; /* White Text */
             text-align: center;
             margin: 0;
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
+           line-height: 140%;
             direction: rtl;
             padding: 100px;
-    width: 100%;
-    font-size: 18px;
-   position: relative;
+             width: 100%;
+            font-size: 18px;
+          position: relative;
+
 }
-.newone{
-border-top: 2px;
+.telephone_box
+{
+
+    background-color: #A9CCCF;
+    width: 200px;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 18px;
+    line-height:60%;
+    color:white;
+    padding: inherit;
+
+
 }
 .h1{
+     background-color: #1a1a2e; /* Darker Blue Form Background */
+    padding: 70px;
+    margin:9px 600px ;
+    text-align: center;
+    font-family: sans-serif;
+    box-snap: center;
+    align-items: center;
+    width: inherit;
+    color: white;
+    position:relative;
 
-    width: 100%;
+
 
         }
 .h2{
@@ -106,7 +128,7 @@ nav li:hover {
     list-style: none;
     justify-content: space-between;
     margin: 0;
-    padding: 50px;
+    padding: 10px;
     width: 90%;
 }
 
@@ -118,12 +140,14 @@ nav li:hover {
     font-stretch: normal;
     font-weight: 500;
     justify-content: space-between;
+
 }
 
 .menu li a {
     color: #ffffff;
     text-decoration: none;
-    margin-top: 5px;
+    margin-top: 10px;
+
 }
 
 .menu li a:hover {

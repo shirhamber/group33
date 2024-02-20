@@ -2,5 +2,6 @@
 .hello-text {
             margin-top: 20px;
             padding-bottom: 5px;
-            color: #1a1a2e; /* Dark Gray Text Color */
+            background-color: #1b1b48; /* Dark Gray Text Color */
         }
+
