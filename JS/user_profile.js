@@ -14,6 +14,13 @@ const errorMsg = document.querySelector('.errorMsg');
 const meetingListContainer = document.getElementById('meetingList');
 
 
+
+
+
+
+
+
+
 function displayErrorMessage(input, message) {
     // Remove any existing error message
     const existingErrorMessage = input.nextElementSibling;
@@ -160,8 +167,10 @@ function isValidAge(age) {
 }
 
 function isValidPhoneNumber(phoneNumber) {
-    return /^\d{10}$/.test(phoneNumber);
+    // Check if phone number starts with the digit 0 and consists of 10 digits
+    return /^0\d{9}$/.test(phoneNumber);
 }
+
 
 function isSameLanguage(firstName, lastName) {
     const isHebrew = /^[א-ת]+$/.test(firstName);
