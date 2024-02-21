@@ -1,4 +1,4 @@
-// Function to load meetings from localStorage
+
 function loadMeetings() {
     const meetingsData = localStorage.getItem('meetings');
     if (meetingsData) {
@@ -11,13 +11,13 @@ function saveMeetings() {
     localStorage.setItem('meetings', JSON.stringify(meetings));
 }
 
-// Call the loadMeetings function to load meetings when the page loads
+
 loadMeetings();
 
 
   const errorMessage = document.createElement('span');
 
-// Function to display error message
+
 function displayErrorMessage(input, message) {
     // Remove any existing error message
     const existingErrorMessage = input.nextElementSibling;
@@ -156,8 +156,8 @@ function displayErrorMessage(input, message) {
     // Customer array
 let customers = [
     {
-        firstName: 'Roni',
-        lastName: 'Chen',
+        firstName: 'רוני',
+        lastName: 'חן',
         age: 28,
         email: 'hamber@post.bgu.ac.il',
         password: '12345678',
@@ -165,8 +165,8 @@ let customers = [
         joinDate: new Date()
     },
     {
-        firstName: 'shir',
-        lastName: 'hamber',
+        firstName: 'שיר',
+        lastName: 'המבר',
         age: 25,
         email: 'shirhambera@gmail.com',
         password: '12121212',

@@ -7,17 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
     scheduleButton.addEventListener('click', function(e) {
         e.preventDefault(); // Prevent form submission
 
-        // Check if the user is logged in
-        if (!isLoggedIn) {
-            alert('אתה צריך להתחבר כדי לקבוע פגישה');
-            // Redirect the user to the user_connection page
-            window.location.href = 'user_connection.html';
-            return;
-        }
-
         const selectedDate = dateInput.value;
         const selectedTime = timeInput.value;
         const selectedType = typeInput.value;
+        const user = sessionStorage.getItem('whichUser');
+        const newMeeting = {
+            user: user,
+            date: selectedDate,
+            time: selectedTime,
+            type: selectedType
+        };
 
         // Validate input fields
         if (!selectedDate || !selectedTime || !selectedType) {
@@ -33,19 +32,24 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Create a new meeting object
-        const newMeeting = {
-            date: selectedDate,
-            time: selectedTime,
-            type: selectedType
-        };
+let login=sessionStorage.getItem('isLoggedIn');
+        alert(login)
+if (!login) {
+            alert('אתה צריך להתחבר כדי לקבוע פגישה');
+            // Redirect the user to the user_connection page
+            window.location.href = 'user_connection.html';
 
+        }else{
+    // Create a new meeting object
+        alert('הפגישה נשמרה בהצלחה!');
         // Push the new meeting to the meetings array
         meetings.push(newMeeting);
 
         // Save the meetings array to localStorage
         saveMeetings();
 
-        alert('הפגישה נשמרה בהצלחה!');
-    });
+
+
+}
+  });
 });

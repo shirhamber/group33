@@ -6,7 +6,7 @@ const signInButton = document.getElementById("signInButton");
 
 
 function setLoggedInState(isLoggedIn) {
-    localStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
+    sessionStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
 }
 
 
@@ -26,8 +26,8 @@ class User {
 const users = [
     {
 
-        firstName: 'Roni',
-        lastName: 'Chen',
+        firstName: 'רוני',
+        lastName: 'חן',
         age: 28,
         email: 'hamber@post.bgu.ac.il',
         password: '12345678',
@@ -37,8 +37,8 @@ const users = [
     },
     {
 
-        firstName: 'shir',
-        lastName: 'hamber',
+        firstName: 'שיר',
+        lastName: 'המבר',
         age: 25,
         email: 'shirhambera@gmail.com',
         password: '12121212',
@@ -66,11 +66,12 @@ signInButton.addEventListener('click', (e) => {
     } else {
         for (let i = 0; i < users.length; i++) {
             if (email === users[i].email && password === users[i].password) {
-                alert('שלום!ההתחברות צלחה')
+                alert('ברוכה הבאה'+' '+users[i].firstName )
                 isUser = true;
-                localStorage.setItem('loggedInUserEmail', email);
+                sessionStorage.setItem('loggedInUserEmail', email);
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('whichUser',email );
 
-                localStorage.setItem('isLoggedIn', 'true');
                 window.location.href = "user_profile.html";
                 break;
             }

@@ -2,7 +2,6 @@ const updateDetailsButton = document.getElementById('updateDetails');
 const saveButton1 = document.getElementById('saveButton');
 const meetingButton = document.getElementById('myMeetings');
 
-
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
@@ -11,36 +10,58 @@ const phone = document.getElementById('phone');
 
 const errorMsg = document.querySelector('.errorMsg');
 const meetingListContainer = document.getElementById('meetingList');
-
-
-function displayErrorMessage(input, message) {
-    // Remove any existing error message
-    const existingErrorMessage = input.nextElementSibling;
-    if (existingErrorMessage && existingErrorMessage.classList.contains('error-message')) {
-        existingErrorMessage.textContent = message;
-        return;
+let j=0;
+const users = [
+    {
+        firstName: 'Roni',
+        lastName: 'Chen',
+        age: 28,
+        email: 'hamber@post.bgu.ac.il',
+        password: '12345678',
+        phoneNumber: '0527967566',
+        joinDate: new Date()
+    },
+    {
+        firstName: 'shir',
+        lastName: 'hamber',
+        age: 25,
+        email: 'shirhambera@gmail.com',
+        password: '12121212',
+        phoneNumber: '0528198984',
+        joinDate: new Date()
     }
+];
 
-    // Create a new span element for the error message
-    const errorMessage = document.createElement('span');
-    errorMessage.textContent = message;
-    errorMessage.classList.add('error-message');
+// Function to populate user details in the form
+function populateUserDetails() {
+        if (! (sessionStorage.getItem('isLoggedIn'))) {
+            // If not logged in, prevent the default action and redirect to user_connection.html
 
-    // Insert the error message after the input field
-    input.insertAdjacentElement('afterend', errorMessage);
+            alert('אתה צריך להתחבר כדי שתוכל להיכנס לחשבון שלך');
+            window.location.href = 'user_connection.html';
+             }else{
+    let emailUser = sessionStorage.getItem('whichUser');
+    // Loop through the users array to find the user with the matching email
+    for (let i = 0; i < users.length; i++) {
+        if (emailUser === users[i].email) {
+            // Set the values of the input fields with user details
+            firstName.value = users[i].firstName;
+            lastName.value = users[i].lastName;
+            email.value = users[i].email;
+            age.value = users[i].age;
+            phone.value = users[i].phoneNumber;
+            j=i;
+            break; // Once user details are populated, exit the loop
+        }}
+    }
 }
 
-function removeErrorMessage(input) {
-    const existingErrorMessage = input.nextElementSibling;
-    if (existingErrorMessage && existingErrorMessage.classList.contains('error-message')) {
-        existingErrorMessage.remove();
-    }
-}
+// Call the function to populate user details when the page loads
+populateUserDetails();
 
 updateDetailsButton.addEventListener('click', function(e) {
     e.preventDefault();
     errorMsg.textContent = '';
-
     // Enable all input fields
     firstName.disabled = false;
     lastName.disabled = false;
@@ -50,10 +71,8 @@ updateDetailsButton.addEventListener('click', function(e) {
     // Hide the Update Details button
     updateDetailsButton.style.display = 'none';
     meetingButton.style.display = 'none';
-
     // Display the Save button
     saveButton1.style.display = 'inline-block';
-
     // Remove any existing error messages
     document.querySelectorAll('.error-message').forEach(function(element) {
         element.remove();
@@ -63,7 +82,6 @@ updateDetailsButton.addEventListener('click', function(e) {
 saveButton1.addEventListener('click', function(e) {
     e.preventDefault();
     errorMsg.textContent = '';
-
     // Validate first name
     if (!isValidInput(firstName.value)) {
         displayErrorMessage(firstName, 'First name is a mandatory field');
@@ -75,7 +93,6 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
-
     // Validate last name
     if (!isValidInput(lastName.value)) {
         displayErrorMessage(lastName, 'Last name is a mandatory field');
@@ -92,7 +109,6 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
-
     // Validate email
     if (!isValidEmail(email.value)) {
         displayErrorMessage(email, 'Please enter a valid email address');
@@ -100,7 +116,6 @@ saveButton1.addEventListener('click', function(e) {
     } else {
         removeErrorMessage(email);
     }
-
     // Validate age
     if (!isValidInput(age.value)) {
         displayErrorMessage(age, 'Age is a mandatory field');
@@ -112,7 +127,6 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
-
     // Validate phone number
     if (!isValidInput(phone.value)) {
         displayErrorMessage(phone, 'Phone number is a mandatory field');
@@ -124,15 +138,21 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
+    // Update user details in the users array
+            users[j].firstName = firstName.value;
+            users[j].lastName = lastName.value;
+            users[j].email = email.value;
+            users[j].age = age.value;
+            users[j].phoneNumber = phone.value;
 
-    // If all inputs are valid, display success message
-    alert('Your profile has been updated successfully.');
+
+
+    alert('Your profile has been updated successfully.'); // If all inputs are valid, display success message
     // Show the Update Details button again
     updateDetailsButton.style.display = 'inline-block';
-    meetingButton.style.display= 'inline-block';
+    meetingButton.style.display = 'inline-block';
     // Hide the Save button
     saveButton1.style.display = 'none';
-
     // Disable all input fields
     firstName.disabled = true;
     lastName.disabled = true;
@@ -163,7 +183,6 @@ function isValidPhoneNumber(phoneNumber) {
     return /^0\d{9}$/.test(phoneNumber);
 }
 
-
 function isSameLanguage(firstName, lastName) {
     const isHebrew = /^[א-ת]+$/.test(firstName);
     const isEnglish = /^[A-Za-z]+$/.test(firstName);
@@ -178,4 +197,4 @@ function isSameLanguage(firstName, lastName) {
 meetingButton.addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'meetings_user.html';
-})
+});

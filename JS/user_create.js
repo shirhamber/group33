@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('שלום!ההרשמה בוצעה בהצלחה');
                         isLoggedIn = true;
 
-                        localStorage.setItem('isLoggedIn', 'true');
+                        sessionStorage.setItem('isLoggedIn', 'true');
 
             // Redirect to user_profile.html
             window.location.href = 'user_profile.html';

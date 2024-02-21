@@ -12,11 +12,11 @@ document.getElementById('submit').addEventListener('click', function (e) {
     const messageInput = document.getElementById('message');
 
     // Validate input fields
-    const isValidFirstName = validateInput(firstNameInput, 'Please fill in your first name');
-    const isValidLastName = validateInput(lastNameInput, 'Please fill in your last name');
+    const isValidFirstName = validateInput(firstNameInput, 'אנא מלא את השם הפרטי');
+    const isValidLastName = validateInput(lastNameInput, 'אנא מלא את שם המשפחה');
     const isValidEmail = validateEmailFormat(emailInput);
     const isValidPhone = validatePhoneNumberFormat(phoneInput);
-    const isValidMessage = validateInput(messageInput, 'Please fill in your message');
+    const isValidMessage = validateInput(messageInput, 'אנא מלא את ההודעה');
 
     // Validate name language
     const isNameLanguageValid = validateNameLanguage(firstNameInput.value, lastNameInput.value);
@@ -24,7 +24,7 @@ document.getElementById('submit').addEventListener('click', function (e) {
     // Check if all inputs are valid
     if (isValidFirstName && isValidLastName && isValidEmail && isValidPhone && isValidMessage && isNameLanguageValid) {
         // All inputs are valid, you can submit the form or perform other actions here
-        displaySuccessMessage('The form has been sent successfully.');
+        displaySuccessMessage('הטופס נשלח בהצלחה');
 
         // Clear all input fields
         clearInputFields();
