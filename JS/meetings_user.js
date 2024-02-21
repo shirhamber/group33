@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const newDateTime = prompt('Enter new date and time for the meeting (YYYY-MM-DD HH:MM AM/PM):');
     if (newDateTime !== null && newDateTime !== '') {
       // Here you can write code to update the meeting date and time
-      alert(`Meeting date and time updated to ${newDateTime}`);
+      alert(`Meeting date and time updated to` ${newDateTime});
     }
   };
 
@@ -32,6 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (confirmCancel) {
       // Here you can write code to cancel the meeting
       alert('הפגישה בוטלה');
-    }
-  };
+    }
+  };
 });

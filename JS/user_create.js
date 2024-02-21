@@ -1,94 +1,53 @@
-const form = document.querySelector('.signupContainer');
-const firstNameInput = document.getElementById('firstName');
-const lastNameInput = document.getElementById('lastName');
-const ageInput = document.getElementById('age');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const phoneNumberInput = document.getElementById('phoneNumber');
-const signupBtn = document.getElementById('signupBtn');
-const googleBtn = document.getElementsByClassName('google');
-const errorMsg = document.querySelector('.errorMsg');
-const userList = document.querySelector('.users');
+document.addEventListener('DOMContentLoaded', function () {
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    const ageInput = document.getElementById('age');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const signupBtn = document.getElementById('signupBtn');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (e.submitter === signupBtn) {
-        const firstName = firstNameInput.value;
-        const lastName = lastNameInput.value;
-        const age = ageInput.value;
-        const email = emailInput.value;
-        const password = passwordInput.value;
-        const phoneNumber = phoneNumberInput.value;
 
-        if (!isValidName(firstName)) {
-            errorMsg.textContent = 'Please enter a valid first name';
-            return;
-        }
-        if (!isValidName(lastName)) {
-            errorMsg.textContent = 'Please enter a valid last name';
-            return;
-        }
-        if (!isValidAge(age)) {
-            errorMsg.textContent = 'Please enter a valid age from 16 ';
-            return;
-        }
-        if (!isValidEmail(email)) {
-            errorMsg.textContent = 'Please enter a valid email';
-            return;
-        }
-        if (!isValidPassword(password)) {
-            errorMsg.textContent = 'Password must be at least 8 characters long and not contain spaces';
-            return;
-        }
+    // Add event listener to the signup button
+    signupBtn.addEventListener('click', function (e) {
+        e.preventDefault();
 
-        if (!isValidPhoneNumber(phoneNumber)) {
-            errorMsg.textContent = 'Please enter a valid phone number';
-            return;
-        }
-         else {
-            errorMsg.textContent = ''
-            alert('שלום! ההרשמה בוצעה בהצלחה');
-            window.location.href = "user_connection.html";
-        }
-    }
-    if (e.submitter === googleBtn) {
-        window.location.href = "https://mail.google.com/mail/u/0/#inbox";
-    }
+        // Reset error messages
+        clearErrorMessages();
+
+        // Validate input fields
+        const isValidFirstName = validateInput(firstNameInput, 'אנא מלא שם פרטי');
+        const isValidLastName = validateInput(lastNameInput, 'אנא מלא שם משפחה');
+        const isValidAge = validateAge(ageInput);
+        const isValidEmail = validateEmailFormat(emailInput);
+        const isValidPassword = validatePassword(passwordInput);
+        const isValidPhoneNumber = validatePhoneNumberFormat(phoneNumberInput);
+
+        // Check if all inputs are valid
+        if (isValidFirstName && isValidLastName && isValidAge && isValidEmail && isValidPassword && isValidPhoneNumber) {
+            // All inputs are valid
+            class User {
+                 constructor( firstName, lastName,age,email, password, phoneNumber) {
+                     this.firstName = isValidFirstName;
+                     this.lastName = isValidLastName;
+                     this.age = isValidAge;
+                    this.email = isValidEmail;
+                     this.password = isValidPassword;
+                    this.phoneNumber = isValidPhoneNumber;
+                    this.joinDate = new Date();
+
+
+                 }
+             }
+
+            alert('שלום!ההרשמה בוצעה בהצלחה');
+                        isLoggedIn = true;
+
+                        localStorage.setItem('isLoggedIn', 'true');
+
+            // Redirect to user_profile.html
+            window.location.href = 'user_profile.html';
+            // Set the global variable indicating user login status to true
+        }
+    });
 });
-
-function isValidEmail(email) {
-    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return validEmail.test(email);
-}
-
-function isValidName(name) {
-    const validFirstName = /^[a-zA-Z\s]+$/;
-    return validFirstName.test(name);
-}
-
-function isValidPassword(password) {
-    if (password.length < 8) {
-        return false;
-    }
-    for (let i = 0; i < password.length; i++) {
-        if (password[i] === " ") {
-            return false;
-        }
-    }
-    return true;
-}
-
-function isValidPhoneNumber(phoneNumber) {
-    const validPhoneNumber = /^\d{10}$/;
-    return validPhoneNumber.test(phoneNumber);
-}
-
-function isValidAge(age) {
-    if (age < 16) {
-        return false;
-    }
-    return true;
-
-
-}
-

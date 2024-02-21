@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../JS/globals.js" defer></script>
+    <script src="../JS/mainFunc.js" defer></script>
+    <script src="../JS/meeting_create.js"></script>
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="../CSS/law_style.css">
@@ -17,20 +20,17 @@
   <li><a href="about.html">אודות</a></li>
   <li><a href="contact_us.html">צור קשר</a></li>
    <li><a href="user_connection.html">חשבון התחברות</a></li>
-<li class="telephone_box">
-        <a href="tel:052-8084081" class=telephone_box">
-						  התקשרו עכשיו <p>052-8084081</p>
-    </a></li>
-</ul></div></nav>
-<h1 class="h1">קביעת פגישה</h1>
-<form action="set-appointment.php" method="post">
 
+</ul></div></nav>
+
+<form  method="post">
+        <h1 class="h1">קביעת פגישה</h1>
         <label for="meetingType">סוג פגישה</label>
         <select id="meetingType" name="meetingType">
             <option value="consultation">ייעוץ</option>
             <option value="follow-up">מעקב</option>
             <option value="presentation">הצגה</option>
-            <!-- Add more options as needed -->
+
         </select>
 
         <label for="date">תאריך</label>
@@ -49,10 +49,8 @@
             <option value="18:00">18:00 </option>
 
         </select>
-
-        <button type="submit">קבע פגישה</button>
+            <button type="submit" id="scudelAppointment">קבע פגישה</button>
     </form>
-
 
 </body>
 </html>

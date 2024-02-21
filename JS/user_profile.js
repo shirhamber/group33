@@ -1,4 +1,3 @@
-// Get the button and input fields
 const updateDetailsButton = document.getElementById('updateDetails');
 const saveButton1 = document.getElementById('saveButton');
 const meetingButton = document.getElementById('myMeetings');
@@ -12,13 +11,6 @@ const phone = document.getElementById('phone');
 
 const errorMsg = document.querySelector('.errorMsg');
 const meetingListContainer = document.getElementById('meetingList');
-
-
-
-
-
-
-
 
 
 function displayErrorMessage(input, message) {
@@ -184,22 +176,6 @@ function isSameLanguage(firstName, lastName) {
 }
 
 meetingButton.addEventListener('click', function(e) {
- // Clear existing content
-    meetingListContainer.innerHTML = '';
-
-    // Create list items with the specified values
-    const meetings = [
-        { date: '20.2', time: '11:00' },
-        { date: '23.5', time: '12:00' }
-    ];
-
-    // Create and append list items to the container
-    meetings.forEach(meeting => {
-        const listItem = document.createElement('div');
-        listItem.textContent = `${meeting.date} ${meeting.time}`;
-        meetingListContainer.appendChild(listItem);
-    });
-
-    // Show the container
-    meetingListContainer.style.display = 'block';
-});
+    e.preventDefault();
+    window.location.href = 'meetings_user.html';
+})
