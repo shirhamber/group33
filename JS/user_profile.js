@@ -32,7 +32,7 @@ const users = [
     }
 ];
 
-// Function to populate user details in the form
+
 function populateUserDetails() {
         if (! (sessionStorage.getItem('isLoggedIn'))) {
             // If not logged in, prevent the default action and redirect to user_connection.html
@@ -109,7 +109,7 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
-    // Validate email
+
     if (!isValidEmail(email.value)) {
         displayErrorMessage(email, 'Please enter a valid email address');
         return;
@@ -127,7 +127,7 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
-    // Validate phone number
+
     if (!isValidInput(phone.value)) {
         displayErrorMessage(phone, 'Phone number is a mandatory field');
         return;
@@ -138,7 +138,7 @@ saveButton1.addEventListener('click', function(e) {
             return;
         }
     }
-    // Update user details in the users array
+
             users[j].firstName = firstName.value;
             users[j].lastName = lastName.value;
             users[j].email = email.value;

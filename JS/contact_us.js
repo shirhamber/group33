@@ -18,7 +18,7 @@ document.getElementById('submit').addEventListener('click', function (e) {
     const isValidPhone = validatePhoneNumberFormat(phoneInput);
     const isValidMessage = validateInput(messageInput, 'אנא מלא את ההודעה');
 
-    // Validate name language
+
     const isNameLanguageValid = validateNameLanguage(firstNameInput.value, lastNameInput.value);
 
     // Check if all inputs are valid

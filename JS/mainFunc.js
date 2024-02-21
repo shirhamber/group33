@@ -71,17 +71,17 @@ function displayErrorMessage(input, message) {
         } else if (isEnglish) {
             return /^[A-Za-z]+$/.test(lastName);
         }
-        return false; // If first name is not in Hebrew or English
+        return false;
     }
 
-    // Function to clear all error messages
+
     function clearErrorMessages() {
         document.querySelectorAll('.error-message').forEach(function(element) {
             element.remove();
         });
     }
 
-    // Function to display success message
+
     function displaySuccessMessage(message) {
         alert(message);
     }
