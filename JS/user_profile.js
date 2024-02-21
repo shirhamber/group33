@@ -1,7 +1,7 @@
 const updateDetailsButton = document.getElementById('updateDetails');
 const saveButton1 = document.getElementById('saveButton');
 const meetingButton = document.getElementById('myMeetings');
-
+const logoutButton = document.getElementById('logout');
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
@@ -197,4 +197,13 @@ function isSameLanguage(firstName, lastName) {
 meetingButton.addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'meetings_user.html';
+});
+
+logoutButton.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('whichUser');
+    alert('התנתקת בהצלחה!');
+    window.location.href = 'user_connection.html';
 });

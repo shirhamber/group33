@@ -29,7 +29,7 @@ comebackButton.addEventListener('click', function(e) {
     const userEmail = getLoggedInUserEmail();
 
     // Find the user's meetings based on the email
-    const userMeetings = meetings.find(user => user.email === userEmail);
+    const userMeetings = localStorage.getItem('meetings').find(user => user.email === userEmail);
 
     // Clear previous meetings
     meetingsList.innerHTML = '';
