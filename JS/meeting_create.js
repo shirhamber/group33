@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 let login=sessionStorage.getItem('isLoggedIn');
-        alert(login)
 if (!login) {
             alert('אתה צריך להתחבר כדי לקבוע פגישה');
             // Redirect the user to the user_connection page
